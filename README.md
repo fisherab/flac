@@ -1,2 +1,2 @@
 # flac
-For listing problmes with flac files
+For listing problems with flac files

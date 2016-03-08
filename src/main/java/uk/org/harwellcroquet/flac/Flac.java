@@ -12,7 +12,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
@@ -55,10 +54,14 @@ public class Flac {
 					int n = rip.indexOf("[");
 
 					rip = rip.substring(12, n).trim();
-
-					codes.add(rip);
+					if (!rip.startsWith("Accurate")) {
+						codes.add(rip);
+						System.out.println(path + " " + rip);
+					}
+					
 				} catch (Exception e) {
-					System.out.println("Bad file found " + e.getClass().getSimpleName() + " " + e.getMessage() + " " + path);
+					System.out.println("Bad file found " + e.getClass().getSimpleName() + " " + e.getMessage() + " "
+							+ path);
 				}
 			}
 
